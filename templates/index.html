@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicon Icon  -->
+    <link rel="shortcut icon" href="https://api.dicebear.com/9.x/lorelei/svg?seed=Scooter" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://api.dicebear.com/9.x/lorelei/svg?seed=Scooter">
+
+    <title>Medical Insurance Price Predictor</title>
+
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            background-color: #343a40; /* Dark background color */
+            color: #fff; /* Text color */
+        }
+        .card {
+            margin-top: 50px;
+            background-color: #212529; /* Dark card background color */
+            color: #fff; /* Card text color */
+        }
+        .card-header {
+            text-align: center;
+            background-color: #343a40; /* Card header background color */
+            border-bottom: none; /* Remove bottom border */
+        }
+        .form-group label {
+            color: #fff; /* Label text color */
+            font-weight: bold; /* Bold label text */
+        }
+        .form-control {
+            background-color: #343a40; /* Input background color */
+            border: 1px solid #ced4da; /* Input border color */
+            color: #fff; /* Input text color */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Button background color */
+            border-color: #007bff; /* Button border color */
+        }
+        .btn-primary:hover {
+            background-color: #0069d9; /* Button hover background color */
+            border-color: #0062cc; /* Button hover border color */
+        }
+        #prediction {
+            color: #fff; /* Prediction text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Welcome to Medical Insurance Price Predictor</h1>
+            </div>
+            <div class="card-body">
+                <form id="predictionForm" method="post" accept-charset="utf-8">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label><b>Age</b></label>
+                            <input type="text" class="form-control" name="age" id="age" placeholder="Age">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Enter Weight (in kg)</b></label>
+                            <input type="text" class="form-control" name="weight" id="weight" placeholder="Weight">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Enter Height (in cm)</b></label>
+                            <input type="text" class="form-control" name="height" id="height" placeholder="Height">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Do you have diabetes? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="diabetes" id="diabetes" placeholder="Diabetes">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Do you have Blood Pressure Problems? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="blood pressure" id="blood pressure" placeholder="Blood Pressure">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Any Transplants? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="transplants" id="transplants" placeholder="Transplants">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Any Chronic Disease? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="disease" id="disease" placeholder="Disease">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>Do you have allergies? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="allergies" id="allergies" placeholder="Allergies">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>History of Cancer in family? (0 or 1)</b></label>
+                            <input type="text" class="form-control" name="cancer" id="cancer" placeholder="Cancer">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label><b>No of major surgeries?</b></label>
+                            <input type="text" class="form-control" name="surgeries" id="surgeries" placeholder="Surgeries">
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary form-control">Predict Price</button>
+                        </div>
+                    </div>
+                </form>
+                <br>
+                <div class="col-md-12" style="text-align: center;">
+                    <h3><span id="prediction"></span></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- JavaScript for handling form submission -->
+    <script>
+        document.getElementById("predictionForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            send_data();
+        });
+
+        function send_data() {
+            var fd = new FormData(document.getElementById("predictionForm"));
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "http://127.0.0.1:5000/predict", true);
+            document.getElementById("prediction").innerHTML = "Predicting price...";
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    document.getElementById("prediction").innerHTML = "Prediction: Rs " + xhr.responseText + " P.A";
+                }
+            };
+            xhr.send(fd);
+        }
+    </script>
+</body>
+</html>
