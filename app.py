@@ -22,7 +22,7 @@ def predict():
         # Extract features from form data
         age = float(form_data['age'])
         diabetes = float(form_data['diabetes'])
-        blood_pressure_problems = float(form_data['blood pressure'])
+        blood_pressure_problems = float(form_data['blood_pressure'])
         any_transplants = float(form_data['transplants'])
         any_chronic_diseases = float(form_data['disease'])
         height = float(form_data['height'])
