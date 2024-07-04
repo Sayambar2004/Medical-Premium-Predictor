@@ -1,5 +1,4 @@
 numpy
-pickle
 flask
 flask_cors
 scikitlearn
